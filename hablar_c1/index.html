@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego C1: El Verbo HABLAR y sus Expresiones</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗣️ El Verbo HABLAR y sus Expresiones</h1>
+            <p class="subtitle">Nivel C1 - Dominio Avanzado</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <span class="progress-text" id="progressText">0/20</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="game-section" id="gameSection">
+                <div class="question-container" id="questionContainer">
+                    <h2 class="question" id="question"></h2>
+                    <div class="options" id="options"></div>
+                </div>
+                
+                <div class="feedback" id="feedback"></div>
+                
+                <div class="explanation" id="explanation"></div>
+                
+                <button class="btn btn-next" id="nextBtn" style="display: none;">Siguiente →</button>
+            </div>
+
+            <div class="theory-section" id="theorySection" style="display: none;">
+                <h2>📚 Teoría: Expresiones con HABLAR</h2>
+                <div class="theory-content">
+                    <div class="theory-card">
+                        <h3>1. HABLAR + Preposiciones</h3>
+                        <ul>
+                            <li><strong>Hablar DE</strong> algo/alguien: Referirse a un tema o persona
+                                <example>Hoy hablamos <strong>de</strong> política en clase.</example>
+                            </li>
+                            <li><strong>Hablar CON</strong> alguien: Comunicarse con una persona
+                                <example>Ayer hablé <strong>con</strong> mi jefe sobre el proyecto.</example>
+                            </li>
+                            <li><strong>Hablar POR</strong> teléfono: Usar el teléfono para comunicarse
+                                <example>Prefiero hablar <strong>por</strong> videollamada.</example>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theory-card">
+                        <h3>2. Expresiones Idiomáticas</h3>
+                        <ul>
+                            <li><strong>Hablar claro</strong>: Ser directo y sincero
+                                <example>No le des vueltas, ¡habla claro!</example>
+                            </li>
+                            <li><strong>Hablar por hablar</strong>: Hablar sin decir nada importante
+                                <example>No me gusta la gente que habla por hablar.</example>
+                            </li>
+                            <li><strong>Hablar en serio</strong>: Decir algo con seriedad
+                                <example>¿Hablas en serio o es una broma?</example>
+                            </li>
+                            <li><strong>Hablar a gritos</strong>: Hablar muy fuerte
+                                <example>No es necesario hablar a gritos, te oigo perfectamente.</example>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="theory-card">
+                        <h3>3. Verbos de Comunicación Relacionados</h3>
+                        <ul>
+                            <li><strong>Hablarse</strong> (pronominal): Tener una conversación
+                                <example>Nos hablamos por teléfono ayer.</example>
+                            </li>
+                            <li><strong>Hablar + idioma</strong>: Dominar un idioma
+                                <example>Hablo español, inglés y francés.</example>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="startGameBtn">Empezar el Juego</button>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>🎉 Resultados</h2>
+                <div class="results-content">
+                    <div class="score-display">
+                        <span class="score-label">Tu puntuación:</span>
+                        <span class="score-value" id="finalScore">0</span>
+                        <span class="score-max">/20</span>
+                    </div>
+                    <div class="performance" id="performance"></div>
+                    <div class="mistakes" id="mistakes"></div>
+                </div>
+                <div class="buttons-group">
+                    <button class="btn btn-secondary" id="reviewBtn">Repasar errores</button>
+                    <button class="btn btn-primary" id="restartBtn">Volver a jugar</button>
+                    <button class="btn btn-tertiary" id="theoryBtn">Ver teoría</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Juego didáctico para nivel C1 - Verbo HABLAR | © 2024</p>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

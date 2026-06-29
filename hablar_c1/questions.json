@@ -1,0 +1,238 @@
+{
+  "title": "Juego C1: El Verbo HABLAR y sus Expresiones",
+  "description": "Base de datos de preguntas para el juego interactivo sobre el verbo HABLAR y sus expresiones idiomáticas para nivel C1.",
+  "level": "C1",
+  "total_questions": 20,
+  "categories": [
+    {
+      "name": "Preposiciones con HABLAR",
+      "description": "Uso de preposiciones (de, con, por) con el verbo hablar"
+    },
+    {
+      "name": "Expresiones Idiomáticas",
+      "description": "Expresiones como 'hablar claro', 'hablar por hablar', etc."
+    },
+    {
+      "name": "Verbo Pronominal",
+      "description": "Uso de 'hablarse' y otras formas pronominales"
+    },
+    {
+      "name": "Errores Comunes",
+      "description": "Identificar y corregir errores comunes"
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "category": "Preposiciones con HABLAR",
+      "question": "¿Qué preposición usamos con 'hablar' cuando nos referimos a un tema?",
+      "options": ["de", "con", "por", "a"],
+      "correct_answer": "de",
+      "correct_index": 0,
+      "explanation": "Usamos 'hablar DE' cuando nos referimos a un tema o asunto. Ejemplo: 'Hablamos de política'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 2,
+      "category": "Preposiciones con HABLAR",
+      "question": "Completa: 'Ayer _____ con mi amigo sobre el partido de fútbol'.",
+      "options": ["hablé de", "hablé con", "hablé por", "hablé a"],
+      "correct_answer": "hablé con",
+      "correct_index": 1,
+      "explanation": "Usamos 'hablar CON' cuando nos comunicamos con una persona. Ejemplo: 'Hablé con mi amigo'.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 3,
+      "category": "Expresiones Idiomáticas",
+      "question": "¿Qué expresión significa 'ser directo y sincero'?",
+      "options": ["hablar por hablar", "hablar claro", "hablar en serio", "hablar a gritos"],
+      "correct_answer": "hablar claro",
+      "correct_index": 1,
+      "explanation": "'Hablar claro' significa ser directo y sincero, sin rodeos.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 4,
+      "category": "Expresiones Idiomáticas",
+      "question": "Si alguien dice 'No me gusta la gente que _____', ¿qué expresión completa la frase?",
+      "options": ["habla claro", "habla por hablar", "habla en serio", "habla a gritos"],
+      "correct_answer": "habla por hablar",
+      "correct_index": 1,
+      "explanation": "'Hablar por hablar' significa hablar sin decir nada importante, por el simple hecho de hablar.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 5,
+      "category": "Expresiones Idiomáticas",
+      "question": "¿Qué expresión usamos cuando queremos confirmar si alguien dice algo con seriedad?",
+      "options": ["¿Hablas claro?", "¿Hablas por hablar?", "¿Hablas en serio?", "¿Hablas a gritos?"],
+      "correct_answer": "¿Hablas en serio?",
+      "correct_index": 2,
+      "explanation": "'Hablar en serio' significa decir algo con seriedad, no como broma.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 6,
+      "category": "Expresiones Idiomáticas",
+      "question": "Completa: 'No es necesario _____, te oigo perfectamente'.",
+      "options": ["hablar claro", "hablar por hablar", "hablar en serio", "hablar a gritos"],
+      "correct_answer": "hablar a gritos",
+      "correct_index": 3,
+      "explanation": "'Hablar a gritos' significa hablar muy fuerte, casi gritando.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 7,
+      "category": "Preposiciones con HABLAR",
+      "question": "¿Qué preposición usamos con 'hablar' cuando usamos el teléfono?",
+      "options": ["de", "con", "por", "a"],
+      "correct_answer": "por",
+      "correct_index": 2,
+      "explanation": "Usamos 'hablar POR teléfono' para indicar el medio de comunicación.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 8,
+      "category": "Preposiciones con HABLAR",
+      "question": "Completa: 'Prefiero _____ videollamada que por teléfono'.",
+      "options": ["hablar de", "hablar con", "hablar por", "hablar a"],
+      "correct_answer": "hablar por",
+      "correct_index": 2,
+      "explanation": "'Hablar por videollamada' indica el medio de comunicación.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 9,
+      "category": "Errores Comunes",
+      "question": "¿Cuál de estas opciones NO es correcta?",
+      "options": ["Hablo español", "Hablo con mi madre", "Hablo de política", "Hablo a mi amigo"],
+      "correct_answer": "Hablo a mi amigo",
+      "correct_index": 3,
+      "explanation": "La forma correcta es 'Hablo CON mi amigo', no 'Hablo A mi amigo'.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 10,
+      "category": "Verbo Pronominal",
+      "question": "Completa: 'Nos _____ por teléfono ayer'.",
+      "options": ["hablamos", "hablamos de", "hablamos con", "hablamos por"],
+      "correct_answer": "hablamos",
+      "correct_index": 0,
+      "explanation": "'Hablarse' en forma pronominal: 'Nos hablamos' significa que tuvimos una conversación.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 11,
+      "category": "Verbo Pronominal",
+      "question": "¿Qué significa 'hablarse' (pronominal)?",
+      "options": ["Hablar de un tema", "Tener una conversación", "Hablar por teléfono", "Hablar claro"],
+      "correct_answer": "Tener una conversación",
+      "correct_index": 1,
+      "explanation": "'Hablarse' (pronominal) significa tener una conversación, generalmente entre dos o más personas.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 12,
+      "category": "Preposiciones con HABLAR",
+      "question": "Completa: '¿_____ español?' - 'Sí, lo hablo con fluidez'.",
+      "options": ["Hablas", "Hablas de", "Hablas con", "Hablas por"],
+      "correct_answer": "Hablas",
+      "correct_index": 0,
+      "explanation": "'¿Hablas español?' es la forma correcta para preguntar si alguien habla un idioma.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 13,
+      "category": "Expresiones Idiomáticas",
+      "question": "¿Qué expresión significa 'hablar sin decir nada importante'?",
+      "options": ["hablar claro", "hablar por hablar", "hablar en serio", "hablar a gritos"],
+      "correct_answer": "hablar por hablar",
+      "correct_index": 1,
+      "explanation": "'Hablar por hablar' significa hablar por el simple hecho de hablar, sin contenido importante.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 14,
+      "category": "Preposiciones con HABLAR",
+      "question": "Completa: 'El profesor _____ de la importancia de la educación'.",
+      "options": ["habló", "habló con", "habló por", "habló a"],
+      "correct_answer": "habló",
+      "correct_index": 0,
+      "explanation": "'Habló de' porque se refiere a un tema (la importancia de la educación).",
+      "difficulty": "medium"
+    },
+    {
+      "id": 15,
+      "category": "Errores Comunes",
+      "question": "¿Cuál es la forma correcta para decir que dominas un idioma?",
+      "options": ["Hablo el español", "Hablo español", "Hablo al español", "Hablo por español"],
+      "correct_answer": "Hablo español",
+      "correct_index": 1,
+      "explanation": "La forma correcta es 'Hablo español' (sin artículo).",
+      "difficulty": "hard"
+    },
+    {
+      "id": 16,
+      "category": "Expresiones Idiomáticas",
+      "question": "Completa: 'No _____ en serio, solo era una broma'.",
+      "options": ["hablaba claro", "hablaba por hablar", "hablaba en serio", "hablaba a gritos"],
+      "correct_answer": "hablaba en serio",
+      "correct_index": 2,
+      "explanation": "'Hablar en serio' significa decir algo con seriedad. La forma en pasado es 'hablaba en serio'.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 17,
+      "category": "Expresiones Idiomáticas",
+      "question": "¿Qué expresión usamos cuando alguien habla muy fuerte?",
+      "options": ["habla claro", "habla por hablar", "habla en serio", "habla a gritos"],
+      "correct_answer": "habla a gritos",
+      "correct_index": 3,
+      "explanation": "'Hablar a gritos' significa hablar muy fuerte, casi gritando.",
+      "difficulty": "easy"
+    },
+    {
+      "id": 18,
+      "category": "Preposiciones con HABLAR",
+      "question": "Completa: '_____ de ti ayer en la reunión'.",
+      "options": ["Hablé", "Hablé de", "Hablé con", "Hablé por"],
+      "correct_answer": "Hablé de",
+      "correct_index": 1,
+      "explanation": "'Hablé de ti' porque 'ti' es el tema de la conversación.",
+      "difficulty": "medium"
+    },
+    {
+      "id": 19,
+      "category": "Errores Comunes",
+      "question": "¿Cuál es la forma incorrecta?",
+      "options": ["Hablo con mi hermano", "Hablo de mi trabajo", "Hablo por teléfono", "Hablo a mi hermano"],
+      "correct_answer": "Hablo a mi hermano",
+      "correct_index": 3,
+      "explanation": "La forma correcta es 'Hablo CON mi hermano', no 'Hablo A mi hermano'.",
+      "difficulty": "hard"
+    },
+    {
+      "id": 20,
+      "category": "Preposiciones con HABLAR",
+      "question": "Completa: '¿Con quién _____ ayer?' - 'Con mi jefe'.",
+      "options": ["hablaste", "hablaste de", "hablaste con", "hablaste por"],
+      "correct_answer": "hablaste con",
+      "correct_index": 2,
+      "explanation": "'¿Con quién hablaste?' - 'Con mi jefe'. Usamos 'hablar con' para personas.",
+      "difficulty": "medium"
+    }
+  ],
+  "difficulty_distribution": {
+    "easy": 6,
+    "medium": 11,
+    "hard": 3
+  },
+  "metadata": {
+    "created_by": "Asistente de Español C1",
+    "creation_date": "2024",
+    "version": "1.0",
+    "language": "español",
+    "target_audience": "Estudiantes de español como lengua extranjera (ELE) - Nivel C1"
+  }
+}
