@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerbOS - Juegos Didácticos de Verbos en Español</title>
+    <base href="/verbos/">
     <style>
         * {
             margin: 0;
@@ -187,6 +188,23 @@
             }
         }
     </style>
+    <script>
+        // Función para obtener la ruta base correcta
+        function getBasePath() {
+            // Si estamos en GitHub Pages
+            if (window.location.pathname.includes('/verbos/')) {
+                return '/verbos/';
+            }
+            // Si estamos en la raíz
+            return '';
+        }
+        
+        // Redirigir correctamente al hacer clic en las tarjetas
+        function navigateToGame(path) {
+            const basePath = getBasePath();
+            window.location.href = basePath + path;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -202,12 +220,12 @@
         <main>
             <div class="games-grid">
                 <!-- Juego HABLAR C1 -->
-                <div class="game-card" onclick="window.location.href='hablar_c1/index.html'">
+                <div class="game-card" onclick="navigateToGame('hablar_c1/index.html')">
                     <div class="game-icon">🗣️</div>
                     <h3>El Verbo HABLAR</h3>
                     <span class="level c1">Nivel C1</span>
                     <p>Domina el verbo hablar y todas sus expresiones idiomáticas, preposiciones y usos avanzados.</p>
-                    <a href="hablar_c1/index.html" class="game-link">Jugar Ahora</a>
+                    <a href="javascript:navigateToGame('hablar_c1/index.html')" class="game-link">Jugar Ahora</a>
                     <div class="stats">
                         <div class="stat">❓ 20 preguntas</div>
                         <div class="stat">📚 Teoría incluida</div>
