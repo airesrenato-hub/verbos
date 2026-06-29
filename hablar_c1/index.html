@@ -3,9 +3,298 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego C1: El Verbo HABLAR y sus Expresiones</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Juego C1: El Verbo HABLAR</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #4a6fa5;
+            --secondary: #166088;
+            --accent: #4fc3f7;
+            --success: #4caf50;
+            --error: #f44336;
+            --light: #f8f9fa;
+            --dark: #333;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            padding: 20px;
+        }
+        
+        .container { max-width: 800px; margin: 0 auto; }
+        
+        header {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        h1 { color: var(--secondary); font-size: 2rem; }
+        .subtitle { color: #666; margin-bottom: 15px; }
+        
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .progress-bar {
+            flex: 1;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        main {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        .section { display: none; }
+        .section.active { display: block; }
+        
+        .question { 
+            font-size: 1.4rem; 
+            color: var(--secondary); 
+            margin-bottom: 25px; 
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .option {
+            background: var(--light);
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .option:hover { 
+            border-color: var(--primary); 
+            background: #e8f0fe; 
+        }
+        
+        .option.selected { 
+            border-color: var(--accent); 
+            background: #e3f2fd; 
+        }
+        
+        .option.correct { 
+            border-color: var(--success); 
+            background: #e8f5e9; 
+            color: var(--success);
+        }
+        
+        .option.incorrect { 
+            border-color: var(--error); 
+            background: #ffebee; 
+            color: var(--error);
+        }
+        
+        .option.disabled { cursor: not-allowed; opacity: 0.7; }
+        
+        .feedback {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            min-height: 30px;
+            margin: 10px 0;
+        }
+        
+        .feedback.correct { color: var(--success); }
+        .feedback.incorrect { color: var(--error); }
+        
+        .explanation {
+            background: #fff3cd;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+            display: none;
+        }
+        
+        .explanation.show { display: block; }
+        
+        .explanation h4 {
+            color: #ff9800;
+            margin-bottom: 8px;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+            margin: 10px 5px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover { background: var(--secondary); }
+        
+        .btn-next {
+            background: var(--success);
+            color: white;
+        }
+        
+        .btn-next:hover { background: #388e3c; }
+        
+        .theory-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .theory-card {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .theory-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 8px;
+        }
+        
+        .theory-card ul { list-style: none; padding-left: 0; }
+        .theory-card li { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .theory-card li::before { 
+            content: "▶"; 
+            color: var(--accent); 
+            position: absolute; 
+            left: 0; 
+        }
+        
+        example {
+            display: block;
+            margin-top: 5px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 6px;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--primary);
+        }
+        
+        .results-content {
+            background: var(--light);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .score-display {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .score-value {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        
+        .performance {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .mistakes {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .mistake-item {
+            margin-bottom: 8px;
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .mistake-item:last-child { border-bottom: none; }
+        
+        .buttons-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .options { grid-template-columns: 1fr; }
+            .buttons-group { flex-direction: column; }
+            .btn { width: 100%; }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -19,20 +308,8 @@
         </header>
 
         <main>
-            <div class="game-section" id="gameSection">
-                <div class="question-container" id="questionContainer">
-                    <h2 class="question" id="question"></h2>
-                    <div class="options" id="options"></div>
-                </div>
-                
-                <div class="feedback" id="feedback"></div>
-                
-                <div class="explanation" id="explanation"></div>
-                
-                <button class="btn btn-next" id="nextBtn" style="display: none;">Siguiente →</button>
-            </div>
-
-            <div class="theory-section" id="theorySection" style="display: none;">
+            <!-- Theory Section -->
+            <div class="section active" id="theorySection">
                 <h2>📚 Teoría: Expresiones con HABLAR</h2>
                 <div class="theory-content">
                     <div class="theory-card">
@@ -67,23 +344,24 @@
                             </li>
                         </ul>
                     </div>
-                    
-                    <div class="theory-card">
-                        <h3>3. Verbos de Comunicación Relacionados</h3>
-                        <ul>
-                            <li><strong>Hablarse</strong> (pronominal): Tener una conversación
-                                <example>Nos hablamos por teléfono ayer.</example>
-                            </li>
-                            <li><strong>Hablar + idioma</strong>: Dominar un idioma
-                                <example>Hablo español, inglés y francés.</example>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
                 <button class="btn btn-primary" id="startGameBtn">Empezar el Juego</button>
             </div>
 
-            <div class="results-section" id="resultsSection" style="display: none;">
+            <!-- Game Section -->
+            <div class="section" id="gameSection">
+                <div class="question-container" id="questionContainer">
+                    <h2 class="question" id="question"></h2>
+                    <div class="options" id="options"></div>
+                </div>
+                
+                <div class="feedback" id="feedback"></div>
+                <div class="explanation" id="explanation"></div>
+                <button class="btn btn-next" id="nextBtn" style="display: none;">Siguiente →</button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="section" id="resultsSection">
                 <h2>🎉 Resultados</h2>
                 <div class="results-content">
                     <div class="score-display">
@@ -95,9 +373,9 @@
                     <div class="mistakes" id="mistakes"></div>
                 </div>
                 <div class="buttons-group">
-                    <button class="btn btn-secondary" id="reviewBtn">Repasar errores</button>
+                    <button class="btn btn-primary" id="reviewBtn">Repasar errores</button>
                     <button class="btn btn-primary" id="restartBtn">Volver a jugar</button>
-                    <button class="btn btn-tertiary" id="theoryBtn">Ver teoría</button>
+                    <button class="btn btn-primary" id="theoryBtn">Ver teoría</button>
                 </div>
             </div>
         </main>
@@ -107,6 +385,332 @@
         </footer>
     </div>
 
-    <script src="game.js"></script>
+    <script>
+        // ========== QUESTIONS DATABASE ==========
+        const questions = [
+            {
+                question: "¿Qué preposición usamos con 'hablar' cuando nos referimos a un tema?",
+                options: ["de", "con", "por", "a"],
+                correct: 0,
+                explanation: "Usamos 'hablar DE' cuando nos referimos a un tema o asunto. Ejemplo: 'Hablamos de política'."
+            },
+            {
+                question: "Completa: 'Ayer _____ con mi amigo sobre el partido de fútbol'.",
+                options: ["hablé de", "hablé con", "hablé por", "hablé a"],
+                correct: 1,
+                explanation: "Usamos 'hablar CON' cuando nos comunicamos con una persona. Ejemplo: 'Hablé con mi amigo'."
+            },
+            {
+                question: "¿Qué expresión significa 'ser directo y sincero'?",
+                options: ["hablar por hablar", "hablar claro", "hablar en serio", "hablar a gritos"],
+                correct: 1,
+                explanation: "'Hablar claro' significa ser directo y sincero, sin rodeos."
+            },
+            {
+                question: "Si alguien dice 'No me gusta la gente que _____', ¿qué expresión completa la frase?",
+                options: ["habla claro", "habla por hablar", "habla en serio", "habla a gritos"],
+                correct: 1,
+                explanation: "'Hablar por hablar' significa hablar sin decir nada importante, por el simple hecho de hablar."
+            },
+            {
+                question: "¿Qué expresión usamos cuando queremos confirmar si alguien dice algo con seriedad?",
+                options: ["¿Hablas claro?", "¿Hablas por hablar?", "¿Hablas en serio?", "¿Hablas a gritos?"],
+                correct: 2,
+                explanation: "'Hablar en serio' significa decir algo con seriedad, no como broma."
+            },
+            {
+                question: "Completa: 'No es necesario _____, te oigo perfectamente'.",
+                options: ["hablar claro", "hablar por hablar", "hablar en serio", "hablar a gritos"],
+                correct: 3,
+                explanation: "'Hablar a gritos' significa hablar muy fuerte, casi gritando."
+            },
+            {
+                question: "¿Qué preposición usamos con 'hablar' cuando usamos el teléfono?",
+                options: ["de", "con", "por", "a"],
+                correct: 2,
+                explanation: "Usamos 'hablar POR teléfono' para indicar el medio de comunicación."
+            },
+            {
+                question: "Completa: 'Prefiero _____ videollamada que por teléfono'.",
+                options: ["hablar de", "hablar con", "hablar por", "hablar a"],
+                correct: 2,
+                explanation: "'Hablar por videollamada' indica el medio de comunicación."
+            },
+            {
+                question: "¿Cuál de estas opciones NO es correcta?",
+                options: ["Hablo español", "Hablo con mi madre", "Hablo de política", "Hablo a mi amigo"],
+                correct: 3,
+                explanation: "La forma correcta es 'Hablo CON mi amigo', no 'Hablo A mi amigo'."
+            },
+            {
+                question: "Completa: 'Nos _____ por teléfono ayer'.",
+                options: ["hablamos", "hablamos de", "hablamos con", "hablamos por"],
+                correct: 0,
+                explanation: "'Hablarse' en forma pronominal: 'Nos hablamos' significa que tuvimos una conversación."
+            },
+            {
+                question: "¿Qué significa 'hablarse' (pronominal)?",
+                options: ["Hablar de un tema", "Tener una conversación", "Hablar por teléfono", "Hablar claro"],
+                correct: 1,
+                explanation: "'Hablarse' (pronominal) significa tener una conversación, generalmente entre dos o más personas."
+            },
+            {
+                question: "Completa: '¿_____ español?' - 'Sí, lo hablo con fluidez'.",
+                options: ["Hablas", "Hablas de", "Hablas con", "Hablas por"],
+                correct: 0,
+                explanation: "'¿Hablas español?' es la forma correcta para preguntar si alguien habla un idioma."
+            },
+            {
+                question: "¿Qué expresión significa 'hablar sin decir nada importante'?",
+                options: ["hablar claro", "hablar por hablar", "hablar en serio", "hablar a gritos"],
+                correct: 1,
+                explanation: "'Hablar por hablar' significa hablar por el simple hecho de hablar, sin contenido importante."
+            },
+            {
+                question: "Completa: 'El profesor _____ de la importancia de la educación'.",
+                options: ["habló", "habló con", "habló por", "habló a"],
+                correct: 0,
+                explanation: "'Habló de' porque se refiere a un tema (la importancia de la educación)."
+            },
+            {
+                question: "¿Cuál es la forma correcta para decir que dominas un idioma?",
+                options: ["Hablo el español", "Hablo español", "Hablo al español", "Hablo por español"],
+                correct: 1,
+                explanation: "La forma correcta es 'Hablo español' (sin artículo)."
+            },
+            {
+                question: "Completa: 'No _____ en serio, solo era una broma'.",
+                options: ["hablaba claro", "hablaba por hablar", "hablaba en serio", "hablaba a gritos"],
+                correct: 2,
+                explanation: "'Hablar en serio' significa decir algo con seriedad. La forma en pasado es 'hablaba en serio'."
+            },
+            {
+                question: "¿Qué expresión usamos cuando alguien habla muy fuerte?",
+                options: ["habla claro", "habla por hablar", "habla en serio", "habla a gritos"],
+                correct: 3,
+                explanation: "'Hablar a gritos' significa hablar muy fuerte, casi gritando."
+            },
+            {
+                question: "Completa: '_____ de ti ayer en la reunión'.",
+                options: ["Hablé", "Hablé de", "Hablé con", "Hablé por"],
+                correct: 1,
+                explanation: "'Hablé de ti' porque 'ti' es el tema de la conversación."
+            },
+            {
+                question: "¿Cuál es la forma incorrecta?",
+                options: ["Hablo con mi hermano", "Hablo de mi trabajo", "Hablo por teléfono", "Hablo a mi hermano"],
+                correct: 3,
+                explanation: "La forma correcta es 'Hablo CON mi hermano', no 'Hablo A mi hermano'."
+            },
+            {
+                question: "Completa: '¿Con quién _____ ayer?' - 'Con mi jefe'.",
+                options: ["hablaste", "hablaste de", "hablaste con", "hablaste por"],
+                correct: 2,
+                explanation: "'¿Con quién hablaste?' - 'Con mi jefe'. Usamos 'hablar con' para personas."
+            }
+        ];
+
+        // ========== GAME STATE ==========
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedOption = null;
+        let mistakes = [];
+
+        // ========== DOM ELEMENTS ==========
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const feedbackEl = document.getElementById('feedback');
+        const explanationEl = document.getElementById('explanation');
+        const nextBtn = document.getElementById('nextBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const gameSection = document.getElementById('gameSection');
+        const theorySection = document.getElementById('theorySection');
+        const resultsSection = document.getElementById('resultsSection');
+        const startGameBtn = document.getElementById('startGameBtn');
+        const finalScoreEl = document.getElementById('finalScore');
+        const performanceEl = document.getElementById('performance');
+        const mistakesEl = document.getElementById('mistakes');
+        const reviewBtn = document.getElementById('reviewBtn');
+        const restartBtn = document.getElementById('restartBtn');
+        const theoryBtn = document.getElementById('theoryBtn');
+
+        // ========== FUNCTIONS ==========
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestion];
+            questionEl.textContent = q.question;
+            optionsEl.innerHTML = '';
+            
+            q.options.forEach((opt, idx) => {
+                const btn = document.createElement('div');
+                btn.className = 'option';
+                btn.textContent = opt;
+                btn.onclick = () => selectOption(btn, idx);
+                optionsEl.appendChild(btn);
+            });
+            
+            feedbackEl.textContent = '';
+            feedbackEl.className = 'feedback';
+            explanationEl.className = 'explanation';
+            nextBtn.style.display = 'none';
+            
+            document.querySelectorAll('.option').forEach(o => {
+                o.classList.remove('disabled', 'correct', 'incorrect', 'selected');
+            });
+        }
+
+        function selectOption(element, index) {
+            if (document.querySelectorAll('.option.disabled').length > 0) return;
+            
+            document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedOption = index;
+        }
+
+        function checkAnswer() {
+            if (selectedOption === null) return;
+            
+            const q = questions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            options.forEach(o => o.classList.add('disabled'));
+            options[q.correct].classList.add('correct');
+            
+            if (selectedOption === q.correct) {
+                score++;
+                feedbackEl.textContent = '✅ ¡Correcto!';
+                feedbackEl.className = 'feedback correct';
+            } else {
+                options[selectedOption].classList.add('incorrect');
+                feedbackEl.textContent = '❌ Incorrecto';
+                feedbackEl.className = 'feedback incorrect';
+                mistakes.push({
+                    question: q.question,
+                    selected: q.options[selectedOption],
+                    correct: q.options[q.correct]
+                });
+            }
+            
+            explanationEl.textContent = q.explanation;
+            explanationEl.className = 'explanation show';
+            nextBtn.style.display = 'block';
+            updateProgress();
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            selectedOption = null;
+            
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            showSection('resultsSection');
+            finalScoreEl.textContent = score;
+            
+            const percentage = Math.round((score / questions.length) * 100);
+            let msg = '', cls = '';
+            
+            if (percentage >= 90) {
+                msg = '🌟 Excelente trabajo! Dominas las expresiones con HABLAR.';
+                cls = 'excellent';
+            } else if (percentage >= 70) {
+                msg = '👍 Muy bien! Tienes un buen conocimiento.';
+                cls = 'good';
+            } else if (percentage >= 50) {
+                msg = '📚 Bien, pero puedes mejorar. Revisa la teoría.';
+                cls = 'average';
+            } else {
+                msg = '💪 Sigue practicando. Necesitas repasar más.';
+                cls = 'poor';
+            }
+            
+            performanceEl.innerHTML = `<h4>Rendimiento:</h4><p class="${cls}">${msg}</p>`;
+            
+            if (mistakes.length > 0) {
+                let html = '<h4>Errores:</h4>';
+                mistakes.forEach((m, i) => {
+                    html += `<div class="mistake-item"><strong>Pregunta ${i+1}:</strong> ${m.question}<br>`;
+                    html += `<span style="color: #f44336;">Tu respuesta: ${m.selected}</span><br>`;
+                    html += `<span style="color: #4caf50;">Correcta: ${m.correct}</span></div>`;
+                });
+                mistakesEl.innerHTML = html;
+            } else {
+                mistakesEl.innerHTML = '<h4>¡Perfecto! No tienes errores.</h4>';
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + (selectedOption !== null ? 1 : 0)) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            progressText.textContent = `${currentQuestion + (selectedOption !== null ? 1 : 0)}/${questions.length}`;
+        }
+
+        function reviewMistakes() {
+            if (mistakes.length === 0) {
+                alert('No tienes errores para repasar.');
+                return;
+            }
+            
+            const mistakeQuestions = questions.filter(q => 
+                mistakes.some(m => m.question === q.question)
+            );
+            
+            if (mistakeQuestions.length === 0) return;
+            
+            questions.splice(0, questions.length, ...mistakeQuestions);
+            currentQuestion = 0;
+            score = 0;
+            selectedOption = null;
+            mistakes = [];
+            
+            showSection('gameSection');
+            loadQuestion();
+            updateProgress();
+        }
+
+        function initGame() {
+            currentQuestion = 0;
+            score = 0;
+            selectedOption = null;
+            mistakes = [];
+            showSection('gameSection');
+            loadQuestion();
+            updateProgress();
+        }
+
+        // ========== EVENT LISTENERS ==========
+        nextBtn.onclick = nextQuestion;
+        startGameBtn.onclick = initGame;
+        reviewBtn.onclick = reviewMistakes;
+        restartBtn.onclick = initGame;
+        theoryBtn.onclick = () => showSection('theorySection');
+
+        // Click on options
+        optionsEl.onclick = (e) => {
+            if (e.target.classList.contains('option') && !e.target.classList.contains('disabled')) {
+                checkAnswer();
+            }
+        };
+
+        // Keyboard support
+        document.onkeydown = (e) => {
+            if (e.key === 'Enter' && nextBtn.style.display === 'block') {
+                nextQuestion();
+            }
+        };
+
+        // Initialize
+        showSection('theorySection');
+    </script>
 </body>
 </html>
